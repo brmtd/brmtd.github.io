@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Benimle Çıkar mısın?</title>
+<style>
+    body {
+        text-align: center;
+        background: #ffe6f2;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+        margin-top: 80px;
+        font-size: 40px;
+        color: #cc0066;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 15px 35px;
+        font-size: 22px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #yes {
+        background-color: #ff3385;
+        color: white;
+    }
+
+    #no {
+        background-color: #999;
+        color: white;
+        position: relative;
+    }
+
+    /* Kalp animasyonu */
+    .heart {
+        position: fixed;
+        color: red;
+        font-size: 24px;
+        animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+        0% {transform: translateY(0);}
+        100% {transform: translateY(-600px);}
+    }
+</style>
+</head>
+<body>
+
+<h1>Seni love lamışam bebegamın. Benimle çıkar mııısın? ❤️</h1>
+
+<div class="buttons">
+    <button id="yes" onclick="yesAnswer()">Evet! ❤️</button>
+    <button id="no" onmouseover="moveNo()">Hayır 😢</button>
+</div>
+
+<script>
+function yesAnswer() {
+    alert("Off! Artık benimsin fıstık ❤️💫");
+    createHearts();
+}
+
+function moveNo() {
+    const noBtn = document.getElementById("no");
+    const x = Math.random() * window.innerWidth * 0.7;
+    const y = Math.random() * window.innerHeight * 0.6;
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function createHearts() {
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {heart.remove();}, 4000);
+    }
+}
+</script>
+
+</body>
+</html>
